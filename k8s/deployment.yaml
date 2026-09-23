@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bv-jump-demo
+  name: session-demo
   labels:
-    app: bv-jump-demo
+    app: session-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bv-jump-demo
+      app: session-demo
   template:
     metadata:
       labels:
-        app: bv-jump-demo
+        app: session-demo
     spec:
       containers:
-        - name: bv-jump
-          image: bv-jump:local
+        - name: session-demo
+          image: session-demo:v1
           imagePullPolicy: Never
           ports:
             - containerPort: 80
