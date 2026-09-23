@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: session-demo
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: "session-demo.localtest.me"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: session-demo
+                port:
+                  number: 80
