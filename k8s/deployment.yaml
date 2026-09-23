@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: session-demo
-          image: session-demo:v1
+          image: session-demo:v2
           imagePullPolicy: Never
           ports:
             - containerPort: 80

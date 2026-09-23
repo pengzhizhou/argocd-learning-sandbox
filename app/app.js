@@ -12,11 +12,15 @@ app.use(session({
 }));
 
 app.get('/', (req, res) => {
+  const banner = '<div style="background:#0369a1;color:white;padding:8px 16px;border-radius:6px;display:inline-block;margin-bottom:20px;">session-demo v2</div>';
+
   if (req.session.username) {
+    if (!req.session.loginTime) req.session.loginTime = new Date().toISOString();
     res.send(`
       <html><body style="font-family: sans-serif; padding: 40px;">
+        ${banner}
         <h1>Welcome, ${req.session.username}!</h1>
-        <p>You have an active session.</p>
+        <p>Session started at: ${req.session.loginTime}</p>
         <form method="POST" action="/logout">
           <button type="submit">Log out</button>
         </form>
@@ -25,6 +29,7 @@ app.get('/', (req, res) => {
   } else {
     res.send(`
       <html><body style="font-family: sans-serif; padding: 40px;">
+        ${banner}
         <h1>Log in</h1>
         <form method="POST" action="/login">
           <input type="text" name="username" placeholder="username" required />
