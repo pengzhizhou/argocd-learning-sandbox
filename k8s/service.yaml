@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bv-jump-demo
+spec:
+  selector:
+    app: bv-jump-demo
+  ports:
+    - port: 80
+      targetPort: 80

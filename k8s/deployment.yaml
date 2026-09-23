@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bv-jump-demo
+  labels:
+    app: bv-jump-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bv-jump-demo
+  template:
+    metadata:
+      labels:
+        app: bv-jump-demo
+    spec:
+      containers:
+        - name: bv-jump
+          image: bv-jump:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
